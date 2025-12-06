@@ -1,0 +1,88 @@
+.user-card {
+  width: 357px;
+  height: 314px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+}
+
+.user-name {
+  width: 211px;
+  height: 30px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #262C40;
+  align-self: center;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 162px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 14px;
+  width: 100%;
+  height: 24px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.phone-icon::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 24px;
+  left: 5px;
+  top: 0px;
+  background: #432EAB;
+}
+
+.email-icon::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 14px;
+  left: 0px;
+  top: 5px;
+  background: #432EAB;
+}
+
+.contact-text {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #8189A3;
+}

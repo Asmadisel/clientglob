@@ -1,0 +1,276 @@
+/* Затемненный фон */
+.modal-backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: rgba(188, 195, 208, 0.5);
+  opacity: 0.6;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.6; }
+}
+
+/* Обертка модального окна */
+.modal-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  animation: slideIn 0.5s ease; /*Анимация в 0,5 сек на выезд модалки.*/
+}
+
+/*Каюсь, это тоже подсмотрел в нейронке - чтобы окно выезжало. */
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -50%) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Контент модального окна */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 40px;
+  width: 500px;
+  min-height: 468px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  position: relative;
+}
+
+/* Заголовок */
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 40px;
+  width: 100%;
+  height: 30px;
+}
+
+.modal-title {
+  width: 100%;
+  height: 30px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #262C40;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.modal-close-button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-close-button:hover {
+  opacity: 0.7;
+}
+
+/* Основная информация */
+.modal-main-info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+  width: 100%;
+  min-height: 188px;
+}
+
+.info-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 14px;
+  width: 137px;
+  height: auto;
+}
+
+.info-label-item {
+  width: 100%;
+  height: 24px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #262C40;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.info-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 14px;
+  width: 275px;
+  height: auto;
+  flex-grow: 1;
+}
+
+.info-value-item {
+  width: 100%;
+  height: 24px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8189A3;
+  display: flex;
+  align-items: center;
+}
+
+.info-value-item:nth-child(5) {
+  height: 36px;
+  font-size: 16px;
+  line-height: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Дополнительная информация */
+.modal-additional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 100%;
+  min-height: 90px;
+}
+
+.additional-info-title {
+  width: 100%;
+  height: 24px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #262C40;
+  margin: 0;
+}
+
+.additional-info-text {
+  width: 100%;
+  min-height: 54px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #8189A3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 20px;
+    gap: 30px;
+  }
+  
+  .modal-header {
+    gap: 20px;
+  }
+  
+  .modal-main-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .info-labels,
+  .info-values {
+    width: 100%;
+  }
+  
+  .info-label-item {
+    height: auto;
+    min-height: 24px;
+  }
+  
+  .info-value-item {
+    height: auto;
+    min-height: 24px;
+  }
+  
+  .info-value-item:nth-child(5) {
+    height: auto;
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-content {
+    padding: 16px;
+    gap: 24px;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  .info-label-item {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .info-value-item {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .additional-info-title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .additional-info-text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
