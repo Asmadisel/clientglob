@@ -1,0 +1,49 @@
+<%
+Response.ContentType = "text/html";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Список сотрудников</title>
+</head>
+<body>
+    <h1>Список сотрудников</h1>
+    
+    <%
+    // МИНИМАЛЬНЫЙ РАБОЧИЙ ВАРИАНТ
+    try {
+        // Самый простой запрос
+        var data = XQuery("collaborators");
+        
+        if (data && data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                var person = data[i];
+                var name = "";
+                
+                // Самый простой способ получить имя
+                if (person.fullname) name = person.fullname;
+                else if (person.getProperty && person.getProperty("fullname")) 
+                    name = person.getProperty("fullname");
+                
+                if (name) {
+                    Response.Write("<div>" + name + "</div>");
+                }
+            }
+        } else {
+            // Демонстрационные данные, если таблица пуста
+            Response.Write("<div>Иванов Иван Иванович</div>");
+            Response.Write("<div>Петров Петр Петрович</div>");
+            Response.Write("<div>Сидорова Анна Владимировна</div>");
+            Response.Write("<p><em>Примечание: данные из таблицы collaborators не найдены, показаны демо-данные</em></p>");
+        }
+    } catch(e) {
+        // Если XQuery не работает вообще
+        Response.Write("<div>Иванов Иван Иванович</div>");
+        Response.Write("<div>Петров Петр Петрович</div>");
+        Response.Write("<div>Сидорова Анна Владимировна</div>");
+        Response.Write("<p><em>Примечание: XQuery недоступен, показаны демо-данные. Ошибка: " + e.message + "</em></p>");
+    }
+    %>
+</body>
+</html>
